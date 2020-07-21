@@ -23,9 +23,13 @@ int recursive_btree_balance(const binary_tree_t *tree)
 	int right_height = 0;
 
 	if (!tree)
-		return (-1);
+		return (0);
 	left_height = recursive_btree_balance(tree->left);
 	right_height = recursive_btree_balance(tree->right);
+	if (tree->left)
+		left_height += 1;
+	if (tree->right)
+		right_height += 1;
 	return (left_height - right_height);
 
 }

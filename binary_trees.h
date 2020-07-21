@@ -64,4 +64,7 @@ size_t recursive_btree_leaves(const binary_tree_t *tree);
 size_t binary_tree_nodes(const binary_tree_t *tree);
 size_t recursive_btree_nodes(const binary_tree_t *tree);
 
+int binary_tree_balance(const binary_tree_t *tree);
+int recursive_btree_balance(const binary_tree_t *tree);
+
 #endif /* BINARY_TREES_H */

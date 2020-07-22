@@ -11,11 +11,11 @@ const binary_tree_t *second)
 {
 	if (!first && !second)
 		return (NULL);
-	if (!second->parent)
-		return (NULL);
-	if (second->parent == first)
+	if (second->parent == first || second->parent->parent == first)
 		return ((binary_tree_t *)first);
 	if (first->parent == second->parent)
 		return (first->parent);
-	return (binary_trees_ancestor(first, second->parent));
+	if (!second->parent || !first->parent)
+		return (NULL);
+	return (binary_trees_ancestor(first->parent, second->parent));
 }

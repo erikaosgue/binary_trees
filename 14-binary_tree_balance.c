@@ -7,9 +7,15 @@
  */
 int binary_tree_balance(const binary_tree_t *tree)
 {
+	int left_height = 0;
+	int right_height = 0;
+
 	if (!tree)
 		return (0);
-	return (recursive_btree_balance(tree));
+	left_height = recursive_btree_balance(tree->left);
+	right_height = recursive_btree_balance(tree->right);
+	return (left_height - right_height);
+
 }
 /**
  * recursive_btree_balance - measures the balance factor of a binary tree
@@ -23,13 +29,10 @@ int recursive_btree_balance(const binary_tree_t *tree)
 	int right_height = 0;
 
 	if (!tree)
-		return (0);
+		return (-1);
 	left_height = recursive_btree_balance(tree->left);
 	right_height = recursive_btree_balance(tree->right);
-	if (tree->left)
-		left_height += 1;
-	if (tree->right)
-		right_height += 1;
-	return (left_height - right_height);
-
+	if (left_height > right_height)
+		return (left_height += 1);
+	return (right_height += 1);
 }

@@ -74,6 +74,10 @@ int binary_tree_is_perfect(const binary_tree_t *tree);
 
 binary_tree_t *binary_tree_sibling(binary_tree_t *node);
 binary_tree_t *binary_tree_uncle(binary_tree_t *node);
+
 binary_tree_t *binary_trees_ancestor(const binary_tree_t *first, const binary_tree_t *second);
+binary_tree_t *find_the_root(const binary_tree_t *root);
+binary_tree_t *recursion_btrees_ancestor(const binary_tree_t *first,
+const binary_tree_t *second, binary_tree_t *ancestor);
 
 #endif /* BINARY_TREES_H */

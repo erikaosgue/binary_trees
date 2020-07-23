@@ -1,6 +1,6 @@
 #include "binary_trees.h"
 /**
- * binary_tree_ancestor - Lowest common ancestor
+ * binary_trees_ancestor - Lowest common ancestor
  * @first: is a pointer to the first node
  * @second: is a pointer to the second node
  * Return: a pointer to the lowest common ancestor node
@@ -9,22 +9,51 @@
 binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
 const binary_tree_t *second)
 {
+	binary_tree_t *root;
+
 	if (!first && !second)
 		return (NULL);
-	if (!first->parent && !second->parent)
+
+	root = find_the_root(first);
+	return (recursion_btrees_ancestor(first, second, root));
+}
+/**
+ * recursive_btrees_ancestor - Lowest common ancestor
+ * @first: is a pointer to the first node
+ * @second: is a pointer to the second node
+ * @ancestor: the root of the binary tree
+ * Return: a pointer to the lowest common ancestor node
+ * of the two given nodes; or NULL  if ancestor was not found
+ */
+binary_tree_t *recursion_btrees_ancestor(const binary_tree_t *first,
+const binary_tree_t *second, binary_tree_t *ancestor)
+{
+	binary_tree_t *ancestor_right, *ancestor_left;
+
+	if (!ancestor)
 		return (NULL);
+	if (ancestor->n == first->n || ancestor->n == second->n)
+		return (ancestor);
+	ancestor_left = recursion_btrees_ancestor(first, second, ancestor->left);
+	ancestor_right = recursion_btrees_ancestor(first, second, ancestor->right);
+	if (ancestor_left && ancestor_right)
+		return (ancestor);
+	else if (ancestor_left)
+		return (ancestor_left);
+	else if (ancestor_right)
+		return (ancestor_right);
+	return (NULL);
 
-	if (first->parent == second->parent)
-		return (first->parent);
-
-	if (second->parent == first)
-		return ((binary_tree_t *)first);
-	if (first->parent == second)
-		return ((binary_tree_t *)second);
-
-	if (second->parent)
-		second = second->parent;
-	if (first->parent)
-		first = first->parent;
-	return (binary_trees_ancestor(first, second));
+}
+/**
+ * find_the_root - find the root of the binary tree
+ * @root: the node of the subtree
+ * Return: the root of the binary tree
+ *
+ */
+binary_tree_t *find_the_root(const binary_tree_t *root)
+{
+	if (!root->parent)
+		return ((binary_tree_t *)root);
+	return (find_the_root(root->parent));
 }

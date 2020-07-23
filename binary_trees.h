@@ -79,5 +79,6 @@ binary_tree_t *binary_trees_ancestor(const binary_tree_t *first, const binary_tr
 binary_tree_t *find_the_root(const binary_tree_t *root);
 binary_tree_t *recursion_btrees_ancestor(const binary_tree_t *first,
 const binary_tree_t *second, binary_tree_t *ancestor);
+binary_tree_t *node_in_the_tree(binary_tree_t *node, binary_tree_t *parent);
 
 #endif /* BINARY_TREES_H */

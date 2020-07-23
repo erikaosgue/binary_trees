@@ -1,4 +1,5 @@
 #include "binary_trees.h"
+#include <stdio.h>
 /**
  * binary_trees_ancestor - Lowest common ancestor
  * @first: is a pointer to the first node
@@ -10,13 +11,18 @@ binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
 const binary_tree_t *second)
 {
 	binary_tree_t *root;
+	binary_tree_t *first_e;
+	binary_tree_t *second_e;
 
 	if (!first || !second)
 		return (NULL);
-	if (first == second)
-		return ((binary_tree_t *)first);
 	root = find_the_root(first);
-	return (recursion_btrees_ancestor(first, second, root));
+	first_e = node_in_the_tree((binary_tree_t *)first, root);
+	second_e = node_in_the_tree((binary_tree_t *)second, root);
+
+	if (first_e && second_e)
+		return (recursion_btrees_ancestor(first, second, root));
+	return (NULL);
 }
 /**
  * recursive_btrees_ancestor - Lowest common ancestor
@@ -59,4 +65,25 @@ binary_tree_t *find_the_root(const binary_tree_t *root)
 	if (!root->parent)
 		return ((binary_tree_t *)root);
 	return (find_the_root(root->parent));
+}
+/**
+ * node_in_the_tree - check if a node is in the tree
+ * @node: node to check
+ * @parent: is the root of the tree
+ * Return: A pointer to the node if is in the Bninary tree
+ * or NULL oterwise
+ */
+binary_tree_t *node_in_the_tree(binary_tree_t *node, binary_tree_t *parent)
+{
+	binary_tree_t *node_L, *node_R;
+
+	if (!parent)
+		return (NULL);
+	if (parent == node)
+		return (node);
+	node_L = node_in_the_tree(node, parent->left);
+	node_R = node_in_the_tree(node, parent->right);
+	if (node_L || node_R)
+		return (node);
+	return (NULL);
 }

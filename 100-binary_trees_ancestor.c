@@ -13,6 +13,8 @@ const binary_tree_t *second)
 
 	if (!first || !second)
 		return (NULL);
+	if (first->n == second->n)
+		return (NULL);
 
 	root = find_the_root(first);
 	return (recursion_btrees_ancestor(first, second, root));

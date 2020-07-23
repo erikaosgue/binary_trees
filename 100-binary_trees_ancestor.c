@@ -11,7 +11,7 @@ const binary_tree_t *second)
 {
 	binary_tree_t *root;
 
-	if (!first && !second)
+	if (!first || !second)
 		return (NULL);
 
 	root = find_the_root(first);

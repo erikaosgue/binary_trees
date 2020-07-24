@@ -1,9 +1,9 @@
 #include "binary_trees.h"
 /**
- *binary_tree_levelorder -
- goes through a binary tree using level-order traversal (horizontal)
+ *binary_tree_levelorder - goes through a binary tree using level-order
+ * traversal (horizontal)
  *@tree: is a pointer to the root node of the tree to traverse
- *@func
+ *@func: A pointer to a function to call for node.
  */
 void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int))
 {
@@ -27,7 +27,7 @@ void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int))
 /**
  * add_nodeint_end - adds a new node at the end of a listint_t list.
  * @head: Its a pointer to the address of the the *head in main.c
- * @n: the data of the note (an int)
+ * @node: the node of the to be enter as data in the linked list
  * Return: the address of the new element, or NULL if it failed
  */
 listint_t *add_nodeint_end(listint_t **head, const binary_tree_t *node)

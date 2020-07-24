@@ -20,6 +20,21 @@ struct binary_tree_s
 	struct binary_tree_s *right;
 };
 typedef struct binary_tree_s binary_tree_t;
+
+/**
+ * struct listint_s - singly linked list
+ * @n: integer
+ * @next: points to the next node
+ * Description: singly linked list node structure
+ * for Holberton project
+ */
+
+typedef struct listint_s
+{
+	binary_tree_t *node;
+	struct listint_s *next;
+} listint_t;
+
 /* Binary Search Tree */
 typedef struct binary_tree_s bst_t;
 /* AVL Tree*/
@@ -80,5 +95,9 @@ binary_tree_t *find_the_root(const binary_tree_t *root);
 binary_tree_t *recursion_btrees_ancestor(const binary_tree_t *first,
 const binary_tree_t *second, binary_tree_t *ancestor);
 binary_tree_t *node_in_the_tree(binary_tree_t *node, binary_tree_t *parent);
+
+void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int));
+binary_tree_t *pop_listint(listint_t **head);
+listint_t *add_nodeint_end(listint_t **head, const binary_tree_t *node);
 
 #endif /* BINARY_TREES_H */

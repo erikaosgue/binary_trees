@@ -100,4 +100,5 @@ void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int));
 binary_tree_t *pop_listint(listint_t **head);
 listint_t *add_nodeint_end(listint_t **head, const binary_tree_t *node);
 
+int binary_tree_is_complete(const binary_tree_t *tree);
 #endif /* BINARY_TREES_H */

@@ -101,4 +101,5 @@ binary_tree_t *pop_listint(listint_t **head);
 listint_t *add_nodeint_end(listint_t **head, const binary_tree_t *node);
 
 int binary_tree_is_complete(const binary_tree_t *tree);
+void free_listint(listint_t *head);
 #endif /* BINARY_TREES_H */

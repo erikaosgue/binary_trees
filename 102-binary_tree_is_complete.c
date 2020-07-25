@@ -14,9 +14,10 @@ int binary_tree_is_complete(const binary_tree_t *tree)
 	if (!tree)
 		return (0);
 
-	temp = (binary_tree_t *)tree;
-	while (temp)
+	add_nodeint_end(&head, tree);
+	while (head)
 	{
+		temp = pop_listint(&head);
 		if (temp->left)
 		{
 			if (btree_complete)
@@ -33,7 +34,6 @@ int binary_tree_is_complete(const binary_tree_t *tree)
 		}
 		else
 			btree_complete = 1;
-		temp = pop_listint(&head);
 	}
 	return (1);
 }

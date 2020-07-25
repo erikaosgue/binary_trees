@@ -103,4 +103,5 @@ listint_t *add_nodeint_end(listint_t **head, const binary_tree_t *node);
 int binary_tree_is_complete(const binary_tree_t *tree);
 void free_listint(listint_t *head);
 binary_tree_t *binary_tree_rotate_right(binary_tree_t *tree);
+binary_tree_t *binary_tree_rotate_left(binary_tree_t *tree);
 #endif /* BINARY_TREES_H */

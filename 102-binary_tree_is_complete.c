@@ -21,7 +21,10 @@ int binary_tree_is_complete(const binary_tree_t *tree)
 		if (temp->left)
 		{
 			if (btree_complete)
+			{
+				free_listint(head);
 				return (0);
+			}
 			add_nodeint_end(&head, temp->left);
 		}
 		else
@@ -29,7 +32,10 @@ int binary_tree_is_complete(const binary_tree_t *tree)
 		if (temp->right)
 		{
 			if (btree_complete)
+			{
+				free_listint(head);
 				return (0);
+			}
 			add_nodeint_end(&head, temp->right);
 		}
 		else
@@ -83,4 +89,20 @@ binary_tree_t *pop_listint(listint_t **head)
 	free(t);
 	return (value_of_head);
 }
+/**
+ * free_listint - frees a listint_t list.
+ * @head: The address of the head pointer
+ * Return: Nothing
+ */
+void free_listint(listint_t *head)
+{
+	listint_t *t;
+	int i;
 
+	for (i = 0; head != NULL; i++)
+	{
+		t = head;
+		head = head->next;
+		free(t);
+	}
+}
